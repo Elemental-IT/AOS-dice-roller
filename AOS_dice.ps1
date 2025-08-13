@@ -2,14 +2,18 @@
 
 # Change the variables to modify the dice outputs 
 # Crit Rolls are Mortal wounds for the time being I will add order wounds when I give this UI
-# variables
+
+# Edit these for Numders for role values
+## If there are no critical hits leave the value of $Crit as zero  
 $Attacks      = 61
-$Crit         = 5
+$Crit         = 5 
 $Hit          = 2
 $Wound        = 3
 $Save         = 4
 $Rend         = 0
 $Damage       = 1
+
+# leave these values 
 $Attackrolls  = 1..$Attacks
 $CritRolls    = $null
 $HitRolls     = $null
@@ -17,10 +21,11 @@ $WoundRolls   = $null
 $SaveRolls    = $null 
 $DamageTotal  = $null
 $HitRollsArr  = @()
-$WoundRollArr   = @()
+$WoundRollArr = @()
 
 function D6 {Get-Random -Minimum 1 -Maximum 7}
 function D3 {Get-Random -Minimum 1 -Maximum 3}
+
  
 $Attackrolls   | ForEach-Object { $HitRoll = D6 ; $HitRollsArr += $HitRoll ; if($HitRoll -ge $Crit){$DamageTotal += $Damage;$CritRolls++}Else{if(($HitRoll -ge $Hit) -and ($HitRoll -lt $Crit)){$HitRolls++}}}
 1..$HitRolls   | ForEach-Object { $WoundRoll = D6 ; $WoundRollArr += $WoundRoll ; if($WoundRoll -ge $Wound){$WoundRolls++}}
