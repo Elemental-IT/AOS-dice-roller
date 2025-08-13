@@ -1,2 +1,5 @@
 # AOS-dice-roller
-Dice roller for AOS 
+
+Age of Sigma Dice roller
+Hit, Wounds, Saves and damage is calculated then output
+Critical hits count only as mortal wounds for now
